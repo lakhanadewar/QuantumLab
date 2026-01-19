@@ -1,5 +1,6 @@
+
 {
   "name": "QuantumLab Explorer",
-  "description": "An interactive pedagogical guide to the foundations of quantum mechanics, from the Bohr model to entanglement.",
+  "description": "An interactive pedagogical guide to the foundations of quantum mechanics, from the Bohr model to entanglement. Purely static version.",
   "requestFramePermissions": []
 }

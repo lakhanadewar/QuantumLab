@@ -16,6 +16,11 @@ import {
 import Quiz from './components/Quiz';
 import { ArrowDown, Menu, X, Microscope, Zap, Atom, HelpCircle, BookOpen, Brain } from 'lucide-react';
 
+/**
+ * QuantumLab: A purely static educational application.
+ * This version contains no AI components and is ready for static hosting.
+ */
+
 const SectionHeader = ({ title, subtitle, icon: Icon }: { title: string, subtitle: string, icon: any }) => (
   <div className="mb-12">
     <div className="inline-flex items-center gap-2 px-3 py-1 bg-violet-100 text-violet-700 text-xs font-bold tracking-widest uppercase rounded-full mb-4 border border-violet-200">
@@ -95,7 +100,7 @@ const App: React.FC = () => {
         <HeroScene />
         <div className="relative z-10 container mx-auto px-6 text-center text-white">
           <div className="inline-block mb-6 px-4 py-1 border border-violet-400/30 text-violet-300 text-xs tracking-[0.3em] uppercase font-bold rounded-full backdrop-blur-md bg-white/5">
-            The Microworld Explored
+            Static Educational Resource
           </div>
           <h1 className="font-serif text-6xl md:text-8xl lg:text-9xl font-bold leading-tight mb-8 bg-clip-text text-transparent bg-gradient-to-b from-white to-stone-400">
             Quantum <br/><span className="italic font-normal text-violet-400">Mechanics</span>
