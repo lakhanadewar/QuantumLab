@@ -245,10 +245,12 @@ const App: React.FC = () => {
                 </div>
                 <p className="text-sm">Comprehensive educational guide to Quantum Mechanics.</p>
             </div>
-         
+            <div className="text-xs tracking-widest uppercase">
+              Static Reference Version
+            </div>
         </div>
         <div className="text-center mt-12 text-xs text-stone-700 border-t border-stone-800 pt-8">
-            &copy; 2026 Educational Visualization. Based on the https://stepanbrychta.com/Quantum.pdf.
+            &copy; 2024 Educational Visualization. Based on the "Introduction to Quantum Mechanics" syllabus.
         </div>
       </footer>
     </div>

@@ -9,15 +9,23 @@ import { Canvas, useFrame } from '@react-three/fiber';
 import { Float, MeshDistortMaterial, Sphere, Torus, Cylinder, Stars, Environment, Points, PointMaterial } from '@react-three/drei';
 import * as THREE from 'three';
 
+// Fix: Aliasing intrinsic Three.js elements to avoid JSX type errors in environments where R3F types are not automatically picked up.
+const Group = 'group' as any;
+const MeshStandardMaterial = 'meshStandardMaterial' as any;
+const MeshBasicMaterial = 'meshBasicMaterial' as any;
+const AmbientLight = 'ambientLight' as any;
+const PointLight = 'pointLight' as any;
+const Color = 'color' as any;
+
 const Nucleus = () => (
-  <group>
+  <Group>
     <Sphere args={[0.3, 32, 32]}>
-      <meshStandardMaterial color="#ef4444" emissive="#ef4444" emissiveIntensity={0.5} />
+      <MeshStandardMaterial color="#ef4444" emissive="#ef4444" emissiveIntensity={0.5} />
     </Sphere>
     <Sphere args={[0.28, 32, 32]} position={[0.1, 0.1, 0.1]}>
-      <meshStandardMaterial color="#3b82f6" emissive="#3b82f6" emissiveIntensity={0.5} />
+      <MeshStandardMaterial color="#3b82f6" emissive="#3b82f6" emissiveIntensity={0.5} />
     </Sphere>
-  </group>
+  </Group>
 );
 
 const Electron = ({ radius, speed, offset = 0 }: { radius: number, speed: number, offset?: number }) => {
@@ -34,26 +42,26 @@ const Electron = ({ radius, speed, offset = 0 }: { radius: number, speed: number
   });
 
   return (
-    <group>
+    <Group>
       {/* Orbital Path */}
       <Torus args={[radius, 0.01, 16, 100]} rotation={[Math.PI / 2, 0, 0]}>
-        <meshBasicMaterial color="#ffffff" transparent opacity={0.1} />
+        <MeshBasicMaterial color="#ffffff" transparent opacity={0.1} />
       </Torus>
       {/* Electron Particle */}
       <Sphere ref={ref} args={[0.08, 16, 16]}>
-        <meshStandardMaterial color="#a78bfa" emissive="#a78bfa" emissiveIntensity={2} />
-        <pointLight intensity={0.5} color="#a78bfa" />
+        <MeshStandardMaterial color="#a78bfa" emissive="#a78bfa" emissiveIntensity={2} />
+        <PointLight intensity={0.5} color="#a78bfa" />
       </Sphere>
-    </group>
+    </Group>
   );
 };
 
 export const AtomScene: React.FC = () => {
   return (
     <Canvas camera={{ position: [0, 5, 10], fov: 45 }}>
-      <color attach="background" args={['#0c0a09']} />
-      <ambientLight intensity={0.5} />
-      <pointLight position={[10, 10, 10]} />
+      <Color attach="background" args={['#0c0a09']} />
+      <AmbientLight intensity={0.5} />
+      <PointLight position={[10, 10, 10]} />
       
       <Nucleus />
       <Electron radius={2} speed={1.5} />
@@ -91,16 +99,16 @@ const WaveParticle = ({ position, color }: { position: [number, number, number],
 export const ParticleWaveScene: React.FC = () => {
   return (
     <Canvas camera={{ position: [0, 0, 8], fov: 45 }}>
-      <color attach="background" args={['#0c0a09']} />
-      <ambientLight intensity={0.5} />
-      <pointLight position={[5, 5, 5]} />
+      <Color attach="background" args={['#0c0a09']} />
+      <AmbientLight intensity={0.5} />
+      <PointLight position={[5, 5, 5]} />
       
       <Float speed={2} rotationIntensity={0.5} floatIntensity={1}>
-        <group>
+        <Group>
           <WaveParticle position={[-2, 0, 0]} color="#8b5cf6" />
           <WaveParticle position={[0, 0, 0]} color="#ec4899" />
           <WaveParticle position={[2, 0, 0]} color="#3b82f6" />
-        </group>
+        </Group>
       </Float>
       
       <Stars radius={50} count={2000} />
